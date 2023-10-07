@@ -78,14 +78,9 @@ namespace AutoKillProcess
         {
             if(lvAvailableProcesses.SelectedItems.Count <= 0)
             {
-                lblMessage.Visible = true;
-                lblMessage.Text = "Please select an item first!";
+                lblMessage.Text = ExceptionManager.DisplayError("Please select an item first!");
+                lblMessage.Visible = ExceptionManager.showLastException;
                 return;
-            }
-
-            if(lblMessage.Visible)
-            {
-                lblMessage.Visible = false;
             }
 
             foreach(ListViewItem item in lvAvailableProcesses.SelectedItems)
@@ -113,14 +108,10 @@ namespace AutoKillProcess
         {
             if(lbAutoKillProcesses.SelectedItems.Count <= 0)
             {
-                lblMessage.Visible = true;
-                lblMessage.Text = "Please select a process to remove!";
+                
+                lblMessage.Text = ExceptionManager.DisplayError("Please select a process to remove!");
+                lblMessage.Visible = ExceptionManager.showLastException;
                 return;
-            }
-
-            if(lblMessage.Visible)
-            {
-                lblMessage.Visible = false;
             }
 
             var item = lbAutoKillProcesses.SelectedItem;
@@ -132,14 +123,9 @@ namespace AutoKillProcess
         {
             if(lbAutoKillProcesses.Items.Count <= 0)
             {
-                lblMessage.Visible = true;
-                lblMessage.Text = "List is already empty!";
+                lblMessage.Text = ExceptionManager.DisplayError("List is already empty!");
+                lblMessage.Visible = ExceptionManager.showLastException;
                 return;
-            }
-
-            if(lblMessage.Visible)
-            {
-                lblMessage.Visible = false;
             }
 
             lbAutoKillProcesses.Items.Clear();
@@ -220,6 +206,13 @@ namespace AutoKillProcess
         private void lightToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LightTheme();
+        }
+
+        private void timerExceptionMessage_Tick(object sender, EventArgs e)
+        {
+            // Hide our messages after 3 seconds
+            ExceptionManager.showLastException = false;
+            lblMessage.Visible = false;
         }
     }
 }

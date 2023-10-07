@@ -30,8 +30,8 @@ namespace AutoKillProcess
                 }
                 catch (System.ComponentModel.Win32Exception)
                 {
-                    // Handle our exception with an Error class to be built
-                    // ExceptionManager.DisplayError("Can not kill this process");        
+                    // Handle our exception
+                    ExceptionManager.DisplayError("Can not kill this process");  
                 }
             }
 

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionManager.cs" />
     <Compile Include="ProcessManager.cs" />
     <Compile Include="ThemeColors.cs" />
     <Compile Include="Form1.cs">
