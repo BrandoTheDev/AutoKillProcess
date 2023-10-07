@@ -6,7 +6,6 @@ using System.Windows.Forms;
  * 
  * ROADMAP/TODO:
  * BREAK CODE DOWN INTO CLASSES
- * MAKE THE UI PRETTY (DARK MODE?!.. YES!)
  * SETUP TESTING
  * HANDLE EXCEPTIONS
  * MAYBE ADD A SAVE FILE?
@@ -25,10 +24,13 @@ namespace AutoKillProcess
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        /*
+         * This function serves to setup our columns and headers,
+         * making sure everything fits within the control and,
+         * doesnt overflow
+         */
+        private void properlySetupListView()
         {
-            lblMessage.Visible = false;
-            this.Text = "AK-Process v1.1.1";
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             processIdHeader = new ColumnHeader();
@@ -44,6 +46,14 @@ namespace AutoKillProcess
             lvAvailableProcesses.Columns.Add(processNameHeader);
             lvAvailableProcesses.Columns.Add(processIdHeader);
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblMessage.Visible = false;
+            this.Text = "AK-Process v1.1.1";
+            
+            properlySetupListView();
             RefreshProcessList();
         }
 
@@ -169,6 +179,73 @@ namespace AutoKillProcess
         private void timerProcessKiller_Tick(object sender, EventArgs e)
         {
             KillProcess();
+        }
+
+        private void DarkTheme()
+        {
+            // Main form
+            this.BackColor = ThemeColors.DarkBackgroundColor;
+            this.ForeColor = ThemeColors.DarkForegroundColor;
+
+            // List view (left side)
+            lvAvailableProcesses.BackColor = ThemeColors.DarkBackgroundColor;
+            lvAvailableProcesses.ForeColor = ThemeColors.DarkForegroundColor;
+
+            // List box (right side)
+            lbAutoKillProcesses.BackColor = ThemeColors.DarkBackgroundColor;
+            lbAutoKillProcesses.ForeColor = ThemeColors.DarkForegroundColor;
+
+            // Button Controls
+            btnAddProcess.BackColor = ThemeColors.DarkBackgroundColor;
+            btnAddProcess.ForeColor = ThemeColors.DarkForegroundColor;
+
+            btnRemoveProcess.BackColor = ThemeColors.DarkBackgroundColor;
+            btnRemoveProcess.ForeColor = ThemeColors.DarkForegroundColor;
+
+            btnClearAllProcesses.BackColor = ThemeColors.DarkBackgroundColor;
+            btnClearAllProcesses.ForeColor  = ThemeColors.DarkForegroundColor;
+            
+            btnRefreshProcesses.BackColor = ThemeColors.DarkBackgroundColor;
+            btnRefreshProcesses.ForeColor = ThemeColors.DarkForegroundColor;
+
+        }
+
+        private void LightTheme()
+        {
+            // Main app
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            // List view (left side)
+            lvAvailableProcesses.BackColor = System.Drawing.SystemColors.Control;
+            lvAvailableProcesses.ForeColor = ThemeColors.LightForegroundColor;
+
+            // List box (right side)
+            lbAutoKillProcesses.BackColor = System.Drawing.SystemColors.Control;
+            lbAutoKillProcesses.ForeColor = ThemeColors.LightForegroundColor;
+
+            // Button Controls
+            btnAddProcess.BackColor = ThemeColors.LightBackgroundColor;
+            btnAddProcess.ForeColor = ThemeColors.LightForegroundColor;
+
+            btnRemoveProcess.BackColor = ThemeColors.LightBackgroundColor;
+            btnRemoveProcess.ForeColor = ThemeColors.LightForegroundColor;
+
+            btnClearAllProcesses.BackColor = ThemeColors.LightBackgroundColor;
+            btnClearAllProcesses.ForeColor = ThemeColors.LightForegroundColor;
+
+            btnRefreshProcesses.BackColor = ThemeColors.LightBackgroundColor;
+            btnRefreshProcesses.ForeColor = ThemeColors.LightForegroundColor;
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DarkTheme();
+        }
+
+        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LightTheme();
         }
     }
 }
