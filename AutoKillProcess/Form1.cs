@@ -2,11 +2,6 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-/*
- * ROADMAP/TODO:
- * MAYBE ADD A SAVE FILE?
- */
-
 namespace AutoKillProcess
 {
     public partial class Form1 : Form
@@ -46,7 +41,7 @@ namespace AutoKillProcess
         private void Form1_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
-            this.Text = "AK-Process v2.4.5";
+            this.Text = "AK-Process v3.0.0";
             
             properlySetupListView();
             populateProcessList();
