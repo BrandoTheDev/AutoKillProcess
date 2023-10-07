@@ -51,37 +51,26 @@ namespace AutoKillProcess
         private void Form1_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
-            this.Text = "AK-Process v1.1.1";
+            this.Text = "AK-Process v2.4.5";
             
             properlySetupListView();
-            RefreshProcessList();
+            populateProcessList();
         }
 
-        private void RefreshProcessList()
+        private void populateProcessList()
         {
             // Empty out our listview
             lvAvailableProcesses.Items.Clear();
 
-            // Cycle through our snapshot of running processes
-            foreach (Process process in Process.GetProcesses())
+            // Cycle through killable processes
+            foreach (Process process in ProcessManager.GetProcessList())
             {
-                // Make sure we have permission to kill the process catch if we dont
-                try
-                {
-                    if (!process.HasExited)
-                    {
-                        // Make sure the process isnt already in the kill box
-                        if (lbAutoKillProcesses.Items.Contains(process.ProcessName)) continue;
-                         
-                        ListViewItem item = lvAvailableProcesses.Items.Add(process.ProcessName);
-                        item.SubItems.Add(process.Id.ToString());
-                    }
-                } catch (System.ComponentModel.Win32Exception win32e)
-                {
-                    // Changed the console write to this label to avoid hitting the exception
-                    lblMessage.Text = win32e.Message;
-                    lblMessage.Text = "We hit a process we cant touch!";
-                }
+                // Make sure the process isnt in the kill box
+                if (lbAutoKillProcesses.Items.Contains(process.ProcessName)) continue;
+
+                // Add it to the running list as "ProcessName | PID"
+                ListViewItem item = lvAvailableProcesses.Items.Add(process.ProcessName); // Name
+                item.SubItems.Add(process.Id.ToString());                               // PID
             }
         }
 
@@ -111,13 +100,13 @@ namespace AutoKillProcess
                 lbAutoKillProcesses.Items.Add(item.Text);
 
                 // Refresh the list
-                RefreshProcessList();
+                populateProcessList();
             }
         }
 
         private void btnRefreshProcesses_Click(object sender, EventArgs e)
         {
-            RefreshProcessList();
+            populateProcessList();
         }
 
         private void btnRemoveProcess_Click(object sender, EventArgs e)
@@ -136,7 +125,7 @@ namespace AutoKillProcess
 
             var item = lbAutoKillProcesses.SelectedItem;
             lbAutoKillProcesses.Items.Remove(item);
-            RefreshProcessList();
+            populateProcessList();
         }
 
         private void btnClearAllProcesses_Click(object sender, EventArgs e)
@@ -154,31 +143,16 @@ namespace AutoKillProcess
             }
 
             lbAutoKillProcesses.Items.Clear();
-            RefreshProcessList();
-        }
-
-        private void KillProcess()
-        {
-            Process[] processes = Process.GetProcesses();
-
-            // Go through our active processes
-            foreach(Process process in processes)
-            {
-                // See if the process name matches the one in the kill box
-                if(lbAutoKillProcesses.Items.Contains(process.ProcessName))
-                {
-                    // see if we can kill it
-                    if(!process.HasExited)
-                    {
-                        process.Kill();
-                    }
-                }
-            }
+            populateProcessList();
         }
 
         private void timerProcessKiller_Tick(object sender, EventArgs e)
         {
-            KillProcess();
+            foreach(var item in lbAutoKillProcesses.Items)
+            {
+                ProcessManager.KillProcess(item.ToString());
+            }
+            
         }
 
         private void DarkTheme()
