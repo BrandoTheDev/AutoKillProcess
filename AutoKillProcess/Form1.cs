@@ -68,8 +68,9 @@ namespace AutoKillProcess
                     }
                 } catch (System.ComponentModel.Win32Exception win32e)
                 {
-                    Console.WriteLine(win32e.Message);
-                    Console.WriteLine("We dont have perms to kill this process. Moving on..");
+                    // Changed the console write to this label to avoid hitting the exception
+                    lblMessage.Text = win32e.Message;
+                    lblMessage.Text = "We hit a process we cant touch!";
                 }
             }
         }

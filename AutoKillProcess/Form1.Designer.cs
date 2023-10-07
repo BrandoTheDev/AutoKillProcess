@@ -130,7 +130,7 @@
             // timerProcessKiller
             // 
             this.timerProcessKiller.Enabled = true;
-            this.timerProcessKiller.Interval = 1000;
+            this.timerProcessKiller.Interval = 800;
             this.timerProcessKiller.Tick += new System.EventHandler(this.timerProcessKiller_Tick);
             // 
             // Form1
