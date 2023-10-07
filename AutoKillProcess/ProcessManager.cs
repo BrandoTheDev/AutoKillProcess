@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace AutoKillProcess
 {
     // This class will handle everything process related
-    internal class ProcessManager
+    public class ProcessManager
     {
         // Returns an array of processes that the user can kill
         public static Process[] GetProcessList()

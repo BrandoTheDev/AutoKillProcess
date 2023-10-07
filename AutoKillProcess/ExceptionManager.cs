@@ -10,7 +10,7 @@ namespace AutoKillProcess
 {
     // Used to handle exceptions better
     // Possibly build on to handle getting last exceptions/current/custom
-    internal class ExceptionManager
+    public class ExceptionManager
     {
         private static string lastException = "";
         public static bool showLastException { get; set; } = false;

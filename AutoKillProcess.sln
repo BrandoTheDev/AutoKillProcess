@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoKillProcess", "AutoKillProcess\AutoKillProcess.csproj", "{93AF038D-64C3-48D2-BF01-5529EBDBD3BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessManagerTests", "ProcessManagerTests\ProcessManagerTests.csproj", "{DF6F5FCC-954B-4235-BBE4-94966AA67DFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionManagerTests", "ExceptionManagerTests\ExceptionManagerTests.csproj", "{6CFCF739-0350-40C1-A00B-E049A6502F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{93AF038D-64C3-48D2-BF01-5529EBDBD3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93AF038D-64C3-48D2-BF01-5529EBDBD3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93AF038D-64C3-48D2-BF01-5529EBDBD3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF6F5FCC-954B-4235-BBE4-94966AA67DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6F5FCC-954B-4235-BBE4-94966AA67DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6F5FCC-954B-4235-BBE4-94966AA67DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6F5FCC-954B-4235-BBE4-94966AA67DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFCF739-0350-40C1-A00B-E049A6502F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFCF739-0350-40C1-A00B-E049A6502F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFCF739-0350-40C1-A00B-E049A6502F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFCF739-0350-40C1-A00B-E049A6502F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 /*
  * ROADMAP/TODO:
- * SETUP TESTING
  * MAYBE ADD A SAVE FILE?
  */
 
