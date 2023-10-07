@@ -3,13 +3,9 @@ using System.Diagnostics;
 using System.Windows.Forms;
 
 /*
- * 
  * ROADMAP/TODO:
- * BREAK CODE DOWN INTO CLASSES
  * SETUP TESTING
- * HANDLE EXCEPTIONS
  * MAYBE ADD A SAVE FILE?
- * 
  */
 
 namespace AutoKillProcess
@@ -141,7 +137,7 @@ namespace AutoKillProcess
             
         }
 
-        private void DarkTheme()
+        private void SetDarkTheme()
         {
             // Main form
             this.BackColor = ThemeColors.DarkBackgroundColor;
@@ -170,7 +166,7 @@ namespace AutoKillProcess
 
         }
 
-        private void LightTheme()
+        private void SetLightTheme()
         {
             // Main app
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -200,12 +196,12 @@ namespace AutoKillProcess
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DarkTheme();
+            SetDarkTheme();
         }
 
         private void lightToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LightTheme();
+            SetLightTheme();
         }
 
         private void timerExceptionMessage_Tick(object sender, EventArgs e)
